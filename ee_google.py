@@ -291,6 +291,11 @@ if __name__ == '__main__':
     args = parser.parse_args()
     args = vars(args)
 
+    if args['START_DATE'] is None:
+        args['START_DATE'] = (datetime.datetime.now().replace(day=1)-datetime.timedelta(days=1)).replace(day=1).strftime('%Y-%m-%d')
+    if args['END_DATE'] is None:
+        args['END_DATE'] = (datetime.datetime.now()+datetime.timedelta(days=1)).strftime('%Y-%m-%d')
+
     #print('Start run w/')
     if we_are_in_jupyter:
         print('Start run w/')
