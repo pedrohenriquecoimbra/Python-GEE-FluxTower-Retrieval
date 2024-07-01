@@ -37,7 +37,7 @@ def are_we_in_jupyter():
 
 we_are_in_jupyter = False
 if are_we_in_jupyter():
-    jupyter = True
+    we_are_in_jupyter = True
 else:
     import curses
     stdscr = curses.initscr()
