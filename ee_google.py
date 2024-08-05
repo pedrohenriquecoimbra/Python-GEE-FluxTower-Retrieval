@@ -164,7 +164,7 @@ class eengine():
                 #run it by band
                 for b in image_date.bandNames().getInfo():
                     if selected_bands is None or b in selected_bands:
-                        output_name = os.path.join(folder, f'{self.SITE_NAME}_{collection_name}_{date}.{b}.tif')
+                        output_name = os.path.join(folder, collection_name, f'{self.SITE_NAME}_{collection_name}_{date}.{b}.tif')
                         url = image_date.getDownloadUrl({
                             'bands': [b],
                             #'scale': 10, 
@@ -178,7 +178,7 @@ class eengine():
                             #print(command)
                             result = subprocess.run(command, capture_output=True)#, shell=True)
                             if result.stdout or result.stderr:
-                                logging.warn(i+1, '/', N, 'current:', ymdhm, '(', d0, '-', d1, 'stdout:', result.stdout.decode("utf-8"), 'stderr:', result.stderr.decode("utf-8"), ')', end='\n')
+                                logging.warn(i+1, '/', N, 'current:', ymdhm, '(', d0, '-', d1, 'stdout:', result.stdout.decode("utf-8"), 'stderr:', result.stderr.decode("utf-8"), ')')
                         else:
                             response = requests.get(url)
                             with open(output_name, 'wb') as fd:
